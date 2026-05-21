@@ -19,7 +19,7 @@ function App() {
           <h1>Get started</h1>
           <p>
             Edit <code>src/App.jsx</code> deployed for github actions and save
-            to test 33<code>HMR</code>
+            to test 47<code>HMR</code>
           </p>
         </div>
         <button
