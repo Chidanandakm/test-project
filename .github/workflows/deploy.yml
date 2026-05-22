@@ -1,31 +1,22 @@
-name: Deploy React App to EC2
+- name: Deploy to EC2
+  uses: appleboy/ssh-action@v1.0.3
+  with:
+    host: ${{ secrets.EC2_HOST }}
+    username: ubuntu
+    key: ${{ secrets.EC2_SSH_KEY }}
+    script: |
+      export NVM_DIR="$HOME/.nvm"
+      source "$NVM_DIR/nvm.sh"
 
-on:
-  push:
-    branches:
-      - main
+      node -v
+      npm -v
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+      cd ~/test-project
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      git pull origin main
 
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/test-project
+      npm install
 
-            git pull origin main
+      npm run build
 
-            npm install
-
-            npm run build
-
-            sudo systemctl restart nginx
+      sudo systemctl restart nginx
