@@ -18,8 +18,8 @@ function App() {
         <div>
           <h1>Get started</h1>
           <p>
-            Edit <code>src/App.jsx</code> deployed for github actions and save
-            to test 51<code>HMR</code>
+            Edit <code>src/App.jsx</code> deployed asdf for github actions and
+            save to test 51<code>HMR</code>
           </p>
         </div>
         <button
